@@ -1,0 +1,1 @@
+In this folder, an alternative approach of writing the reusable code is implemented. This approach is using class inheritance. The reason it is an alternative approach is because inheritance has a tighter coupling as opposed to composition, which is used as a main approach.
