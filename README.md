@@ -13,16 +13,19 @@
 ```
 3. **How to use**
 ```javascript
-    import CsvFileReader from './components/CsvFileReader';
+   import MatchFileReader from './components/MatchFileReader';
+   import Summary from './components/Summary';
+   import WinsAnalysis from './components/analyzers/WinsAnalysis';
+   import HtmlReport from './components/reports/HtmlReport';
 
-    const csvReader = new CsvFileReader('football.csv');
+   const matchReader = MatchFileReader.fromCsv('football.csv');
+   matchReader.load();
 
-    const matchReader = new MatchFileReader(csvReader);
-    matchReader.read();
+   const summary = new Summary(new WinsAnalysis('Chelsea'), new HtmlReport());
+   summary.produceReport(matchReader.data);
 
-
-
-    //Analysis tool to be added
 ```
 
-Where, `MatchFileReader` must delegate the `read(): void` method to the `CsvFileReader`.
+In the case above, we use HtmlReport class, but we can easily swap it with another report generator. Same goes for the WinsAnalysis class, which can be replaced with another analysis type.
+
+Finally, CsvFileReader can be used not only to parse Football match data, but any other csv file with different structure. To use it for another purpose, a new class needs to be created with definitions on parsing the new structure.
