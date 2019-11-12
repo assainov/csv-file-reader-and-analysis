@@ -1,12 +1,11 @@
 import { MatchResult } from '../enums/MatchResult';
 import { dateStringToDate } from '../utils/dateStringToDate';
+import { MatchData } from '../aliases/MatchData';
 
 interface DataReader {
     read(): void;
     data: string[][];
 }
-
-type MatchData = [Date, string, string, number, number, MatchResult, string];
 
 export default class MatchFileReader {
     constructor(public reader: DataReader) {}
